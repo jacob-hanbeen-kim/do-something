@@ -1,3 +1,4 @@
+import 'package:do_something/presentation/screens/pattern_memory/widget/challenge.dart';
 import 'package:flutter/material.dart';
 
 class PatternMemory extends StatefulWidget {
@@ -15,7 +16,11 @@ class _PatternMemoryState extends State<PatternMemory> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[Text('hello'), SizedBox(height: 40.0)]))),
+                  children: <Widget>[
+                    Challenge(),
+                    Text('hello'),
+                    SizedBox(height: 40.0)
+                  ]))),
     );
   }
 }
