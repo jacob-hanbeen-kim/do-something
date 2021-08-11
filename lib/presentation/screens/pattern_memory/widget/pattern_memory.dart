@@ -1,5 +1,7 @@
-import 'package:do_something/presentation/screens/pattern_memory/widget/challenge.dart';
 import 'package:flutter/material.dart';
+
+import 'package:do_something/presentation/screens/pattern_memory/widget/challenge.dart';
+import 'package:do_something/presentation/screens/pattern_memory/widget/arrow_container.dart';
 
 class PatternMemory extends StatefulWidget {
   @override
@@ -7,6 +9,15 @@ class PatternMemory extends StatefulWidget {
 }
 
 class _PatternMemoryState extends State<PatternMemory> {
+
+  List<Widget> _inputs = [];
+
+  updateInputText(icon) {
+    setState(() {
+      _inputs.add(Flexible(child: icon));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -14,13 +25,24 @@ class _PatternMemoryState extends State<PatternMemory> {
           child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Challenge(),
-                    Text('hello'),
-                    SizedBox(height: 40.0)
-                  ]))),
+                    SizedBox(height: 0.0),
+                    Column(
+                      children: [
+                        Challenge(),
+                        Row(
+                          // mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: _inputs
+                        )
+                      ],
+                    ),
+                    ArrowContainer(updateInputText),
+                  ]
+              )
+          )
+      ),
     );
   }
 }
