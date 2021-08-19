@@ -11,10 +11,17 @@ class PatternMemory extends StatefulWidget {
 class _PatternMemoryState extends State<PatternMemory> {
 
   List<Widget> _inputs = [];
+  List<Widget> _challenge = [];
 
   updateInputText(icon) {
     setState(() {
       _inputs.add(Flexible(child: icon));
+    });
+  }
+
+  updateChallenge(icon) {
+    setState(() {
+      _challenge.add(Flexible(child: icon));
     });
   }
 
@@ -30,7 +37,7 @@ class _PatternMemoryState extends State<PatternMemory> {
                     SizedBox(height: 0.0),
                     Column(
                       children: [
-                        Challenge(),
+                        Challenge(updateChallenge),
                         Row(
                           // mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
